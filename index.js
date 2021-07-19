@@ -1,15 +1,5 @@
-// Import stylesheets
 import './style.css';
 
-// Write Javascript code!
-const $root = document.getElementById('data');
+const $root = document.getElementById('app');
 
-function BetterStack() {
-	const collection = [];
-
-	this.has = function(elem) {
-		return collection.indexOf(elem) !== -1;
-	};
-}
-
-$root.innerHTML = `<h1>JS Starter</h1>`;
+$root.innerHTML = '<h1>Hello World!</h1>';
