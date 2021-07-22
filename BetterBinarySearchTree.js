@@ -164,7 +164,7 @@ function BetterBinarySearchTree() {
   };
 
   this.isBalanced = function() {
-    return this.findMinHeight() >= this.findMaxHeight - 1;
+    return this.findMinHeight() >= this.findMaxHeight() - 1;
   };
 }
 
