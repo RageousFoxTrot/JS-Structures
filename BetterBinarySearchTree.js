@@ -34,7 +34,7 @@ function BetterBinarySearchTree() {
                 return;
 
               case node.right !== null:
-                return searchTree(node.rigth);
+                return searchTree(node.right);
             }
             break;
 
@@ -165,6 +165,53 @@ function BetterBinarySearchTree() {
 
   this.isBalanced = function() {
     return this.findMinHeight() >= this.findMaxHeight() - 1;
+  };
+
+  this.traversal = { }.bind(this);
+
+  this.traversal.prototype.inOrder = function() {
+    if (this.root === null) return null;
+
+    const result = [];
+    function transverseInOrder(node) {
+      node.left && transverseInOrder(node.left);
+      result.push(node.data);
+      node.right && transverseInOrder(node.right);
+    }
+    transverseInOrder(node.root);
+    
+    return result;
+  };
+
+  this.traversal.prototype.preOrder = function() {
+    if (this.root === null) return null;
+
+    const result = [];
+    function transversePreOrder(node) {
+      result.push(node.data);
+      node.left && transversePreOrder(node.left);
+      node.right && transversePreOrder(node.right);
+    }
+    transversePreOrder(this.root);
+
+    return result;
+  };
+
+  this.traversal.prototype.levelOrder = function() {
+    if (this.root === null) return null;
+
+    let result = [], Q = [];
+
+    Q.push(this.root);
+    while (Q.length > 0) {
+      let node = Q.shift();
+
+      result.push(node.data);
+      node.left && Q.push(node.left);
+      node.right && Q.push(node.right);
+    }
+
+    return result;
   };
 }
 
